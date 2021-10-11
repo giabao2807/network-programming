@@ -36,8 +36,6 @@ public class CaroClient extends JFrame implements MouseListener, Runnable{
 			Socket soc = new Socket("localhost",80);
 			dos = new DataOutputStream(soc.getOutputStream());
 			dis = new DataInputStream(soc.getInputStream());
-			
-			
 		} catch (Exception e) {
 		}
 		new Thread(this).start();
