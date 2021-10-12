@@ -67,7 +67,8 @@ public class CaroOffline extends JFrame implements MouseListener{
 		}
 		dadanh.add(new Point(ix, iy));
 		this.repaint();
-		}
+
+		
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
