@@ -1002,7 +1002,7 @@ function checkWinDiagonalRightToLeft(xCordinate,yCordinate,colorPiece)
 
 /* ===================== New Game ===================== */
 
-function newgame()
+function reload()
 {
     location.reload();
 }
