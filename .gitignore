@@ -11,6 +11,7 @@
 */.gitignore
 
 # Compiled class file
+*bin/
 */bin/
 *.class
 
