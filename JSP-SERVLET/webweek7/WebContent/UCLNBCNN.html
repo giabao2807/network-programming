@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UCLNBCNN|Gia Bao</title>
+    <script>
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hãy nhập 2 số bất kì</h1>
+      <form action="UCLNBCNNServlet" method="POST" name="form1">
+        <label>Số A = </label>
+        <input type="text" name="A" />
+        <br />
+        <label>Số B = </label>
+        <input type="text" name="B"/>
+        <br />
+        <input type="submit" value="OK"/>
+        <input type="reset" id="reset" />
+        <br />
+      </form>
+    </div>
+  </body>
+
+  <style>
+    body {
+      background-color: lightblue;
+      color: rgb(35, 26, 97);
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      border: 2px solid rgb(35, 26, 97);
+      border-radius: 3px;
+      box-shadow: rgb(35, 26, 97) 0px 3px 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    input {
+      border: 1px solid rgb(35, 26, 97);
+      border-radius: 3px;
+      padding: 4px;
+      margin-top: 10px;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      background-color: rgb(35, 26, 97);
+      color: white;
+      width: 80px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      background-color: slateblue;
+    }
+  </style>
+</html>
