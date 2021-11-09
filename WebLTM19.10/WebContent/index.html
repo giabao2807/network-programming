@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Co Caro |Gia Bao</title>
+  </head>
+
+  <body id="page-top">
+    <div>
+      <h1>Caro game</h1>
+      <canvas class="bg" id="background"></canvas>
+      <br />
+      <input type="reset" value="reset" onclick="reload()" />
+    </div>
+
+    <script type="text/javascript">
+      var player = 1; // Kiểm tra hiện đến lượt ai - Check turn
+      // Khai báo biến canvas để vẽ
+      var canvas = document.getElementById("background");
+      // Phương thức getContext() trả về định nghĩa để vẽ trên canvas, hoặc null nếu định nghĩa đó không được hỗ trợ
+      var context = canvas.getContext("2d");
+
+      // Kích thước bàn cờ - Board size
+      var canvasSize = 550; // Kích thước tối đa của bàn cờ - max size of board
+      var numberOfSquare = 10; // Số ô - number of square
+      var sectionSize = 50; // Kích thước mỗi ô - size of square
+      canvas.width = canvasSize; // Chiều dài bàn cờ - Width of board
+      canvas.height = canvasSize; // Chiều rộng bàn cờ - Height of board
+
+      // Màu sắc - Color of X and O
+      var colorX = "#FF0000";
+      var colorO = "#000080";
+
+      function drawBoard(numberOfSquare) {
+        if (numberOfSquare <= 10) {
+          for (x = 0; x <= numberOfSquare; x++) {
+            for (y = 0; y <= numberOfSquare; y++) {
+              // Đường ngang - rows
+              context.moveTo(0, sectionSize * y);
+              context.lineTo(sectionSize * numberOfSquare, sectionSize * y);
+              context.stroke();
+
+              // Đường dọc - columns
+              context.moveTo(sectionSize * x, 0);
+              context.lineTo(sectionSize * x, sectionSize * numberOfSquare);
+              context.stroke();
+            }
+          }
+        } else {
+          alert("Max number of square is 10- Số ô tối đa là 10");
+        }
+      }
+
+      function drawO(xCordinate, yCordinate) {
+        context.beginPath();
+        context.arc(xCordinate, yCordinate, 25, 0, 2 * Math.PI);
+        context.moveTo(xCordinate, yCordinate);
+        context.lineWidth = 3;
+        context.strokeStyle = colorO;
+        context.stroke();
+      }
+
+      function drawX(xCordinate, yCordinate) {
+        context.beginPath();
+
+        context.moveTo(xCordinate - 20, yCordinate - 20);
+        context.lineTo(xCordinate + 20, yCordinate + 20);
+
+        context.moveTo(xCordinate + 20, yCordinate - 20);
+        context.lineTo(xCordinate - 20, yCordinate + 20);
+        context.lineWidth = 5;
+        context.strokeStyle = colorX;
+        context.stroke();
+      }
+
+      document
+        .getElementById("background")
+        .addEventListener("click", getPositionClick);
+
+      function getPositionClick(event) {
+        var rect = canvas.getBoundingClientRect();
+
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+
+        console.log(x, y);
+
+        addPlayingPiece(x, y);
+      }
+
+      function addPlayingPiece(clickX, clickY) {
+        var xCordinate, yCordinate;
+
+        // Vòng lặp kiểm tra từng ô
+        for (var x = 0; x < numberOfSquare; x++) {
+          for (var y = 0; y < numberOfSquare; y++) {
+            // Xác định tọa độ từng ô
+            xCordinate = x * sectionSize;
+            yCordinate = y * sectionSize;
+
+            // Nếu click đúng vào vị trí của ô đó thì vẽ X hoặc O
+            if (
+              clickX > xCordinate &&
+              clickX < xCordinate + sectionSize &&
+              clickY > yCordinate &&
+              clickY < yCordinate + sectionSize
+            ) {
+              // Tính toán vị trí cho đúng tâm ô vuông để vẽ
+              xCordinate = xCordinate + sectionSize / 2;
+              yCordinate = yCordinate + sectionSize / 2;
+
+              if (player % 2 == 1) {
+                drawX(xCordinate, yCordinate);
+                player++;
+              } else {
+                drawO(xCordinate, yCordinate);
+                player++;
+              }
+            }
+          }
+        }
+      }
+
+      // Maximum is 10
+      drawBoard(10);
+
+      //reload()
+      function reload() {
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
+<style>
+  body {
+    background-color: lightblue;
+    color: palevioletred;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  div {
+    text-align: center;
+  }
+  input {
+    align-items: center;
+    font-size: 30px;
+    height: auto;
+    width: 150px;
+    color: palevioletred;
+    border: 1px solid palevioletred;
+    border-radius: 4px;
+    padding: 4px;
+  }
+  input[type="reset"]:hover {
+    background-color: lightblue;
+    color: cadetblue;
+    border: 1px solid cadetblue;
+  }
+</style>
