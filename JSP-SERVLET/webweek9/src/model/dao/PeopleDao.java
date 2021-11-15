@@ -63,5 +63,27 @@ public class PeopleDao {
 		}
 		return null;
 	}
+	public boolean addPeople(String id,String name,String hobbies,String gender) {
+		String query = "insert into people(id,name,hobbies,gender) values (?,?,?,?);";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, id);
+			pst.setString(2, name);
+			pst.setString(3, hobbies);
+			pst.setString(4, gender);
+			if (pst.executeUpdate()>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 
 }

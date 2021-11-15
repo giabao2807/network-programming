@@ -81,5 +81,26 @@ public class AdminDao {
 		}
 		return false;
 	}
-
+	
+	public boolean addAdmin(String username,String password, String id) {
+		String query = "insert into admin (username,password,id) values (?,?,?);";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, username);
+			pst.setString(2, password);
+			pst.setString(3, id);
+			if (pst.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }

@@ -15,4 +15,7 @@ public class PeopleBo {
 	public People getDetailById(String id) {
 		return dao.getPeopleByID(id);
 	}
+	public boolean addPeople(String id,String name,String hobbies,String gender) {
+		return dao.addPeople (id, name, hobbies, gender);
+	}
 }	

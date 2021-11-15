@@ -18,4 +18,8 @@ public class AdminBo {
 	public Admin getAdmin(String username, String password) {
 		return dao.getAdmin(username, password);
 	}
+	
+	public boolean addAdmin(String username,String password, String id) {
+		return dao.addAdmin(username,password,id);
+	}
 }

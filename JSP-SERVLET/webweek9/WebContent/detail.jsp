@@ -78,5 +78,20 @@
   input[type="submit"]:hover {
     background-color: #aad4ef;
   }
+  a {
+    width: 300px;
+    color: #253e63;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #253e63;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+  a:hover {
+    background-color: #aad4ef;
+    box-shadow: #aad4ef 0px 1px 2px 0px, #aad4ef 0px 1px 3px 1px;
+  }
 </style>
 </html>
