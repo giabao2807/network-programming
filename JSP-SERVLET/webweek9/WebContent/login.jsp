@@ -1,3 +1,4 @@
+<%@page import="model.bean.People"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +19,16 @@
 </script>
 </head>
 <body>
+	<%
+	People people = (People) request.getSession().getAttribute("people");
+	if (people != null) {
+		response.sendRedirect("detail.jsp");
+	}
+	%>
 	<div class="container">
 		<h1>Login</h1>
-		<form action="<%= request.getContextPath() %>/CheckLoginServlet" method="POST" name="form1">
+		<form action="<%=request.getContextPath()%>/CheckLoginServlet"
+			method="POST" name="form1">
 			<label for="username">Username</label> <input type="text"
 				name="username" id="username" /> <br /> <label for="password">Password</label>
 			<input type="password" name="password" id="password" /> <br /> <input

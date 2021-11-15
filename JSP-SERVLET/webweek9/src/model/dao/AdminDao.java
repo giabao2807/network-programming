@@ -65,9 +65,19 @@ public class AdminDao {
 	}
 
 	public boolean isExist(String username, String password) {
-		for (Admin ad : getAllAdmin()) {
-			if (ad.getUsername().equals(username) && ad.getPassword().equals(password))
+		String query = "select * from  admin  where username = ? and password =? ;";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, username);
+			pst.setString(2, password);
+			rs = pst.executeQuery();
+			if (rs.next()) {
 				return true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}

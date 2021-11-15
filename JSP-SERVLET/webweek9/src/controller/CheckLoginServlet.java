@@ -39,11 +39,11 @@ public class CheckLoginServlet extends HttpServlet {
 		
 		if(adminbo.isExist(username, password)) {
 			People people = ppbo.getDetailById(adminbo.getAdmin(username, password).getId());
-			request.setAttribute("people",people);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/detail.jsp");
+			request.getSession().setAttribute("people",people);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("detail.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			response.sendRedirect("/WEB-INF/view/login.jsp");
+			response.sendRedirect("login.jsp");
 		}
 	}
 
