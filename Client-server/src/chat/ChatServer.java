@@ -13,6 +13,7 @@ public class ChatServer {
 		new ChatServer();
 	}
 
+	
 	public ChatServer() {
 		try {
 			ServerSocket server = new ServerSocket(80);
@@ -26,6 +27,7 @@ public class ChatServer {
 
 		}
 	}
+	
 
 	class Xuly extends Thread {
 		ChatServer cs;
@@ -40,6 +42,7 @@ public class ChatServer {
 		public void run() {
 			try {
 				DataOutputStream dos = new DataOutputStream(soc.getOutputStream());
+				
 				DataInputStream dis = new DataInputStream(soc.getInputStream());
 
 				dos.writeUTF("Please input your name");

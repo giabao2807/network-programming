@@ -15,6 +15,7 @@ public class ChatClient {
 		try {
 			Scanner sc  = new Scanner(System.in);
 			Socket soc = new Socket(InetAddress.getByName("118.71.133.217"),80);
+			
 			DataInputStream dis = new DataInputStream(soc.getInputStream());
 			DataOutputStream dos = new DataOutputStream(soc.getOutputStream());
 			
